@@ -1,6 +1,6 @@
 import streamlit as st
 import pickle
-
+import requests
 # def recommend(movie):
 #     movie_index = movies_list[movies_list['title'] == movie].index[0]
 #     distances = similarity[movie_index] # Assuming similarity is correctly defined elsewhere
@@ -30,6 +30,9 @@ import pickle
 #     for i in recommandation:
 #        st.write(i)
 
+# def fetch_poster(movie_id):
+#     requests.get()
+
 def recommend(movie, movies_list):
     movie_index = movies_list[movies_list['title'] == movie].index[0]
     distances = similarity[movie_index] # Assuming similarity is correctly defined elsewhere
@@ -38,6 +41,8 @@ def recommend(movie, movies_list):
     recommended_movies = []
     for i in movies_sorted:
         recommended_movies.append(movies_list.iloc[i[0]]['title'])
+        movie_id = i[0]
+        # fetch poster from api
     return recommended_movies
 
 st.title('Movie Recommender System')
